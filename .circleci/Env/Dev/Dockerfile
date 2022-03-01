@@ -1,19 +1,11 @@
-FROM alpine:latest
-RUN apk add --no-cache nodejs npm
+FROM node:8.11-slim
 
+ENV workdirectory /usr/node
 
-WORKDIR /app
+WORKDIR $workdirectory
+WORKDIR app
 
+RUN pwd
 
-COPY . /app
-
-
-RUN npm install
-
-
-EXPOSE 9005
-
-
-ENTRYPOINT ["node"]
-
-CMD ["server.js"]
+# command executable and version
+ENTRYPOINT ["node"
